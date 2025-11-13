@@ -1,0 +1,1521 @@
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink-light: #FFB6D9;
+    --pink-medium: #FFC0CB;
+    --red-warm: #DC143C;
+    --white: #FFFFFF;
+    --gold: #FFD700;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+html {
+    height: 100%;
+}
+
+/* ==================== PAGE TRANSITIONS ==================== */
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#mainPage {
+    position: relative;
+}
+
+#mainPage.active {
+    overflow-y: auto;
+}
+
+/* ==================== FLOATING HEARTS ANIMATION ==================== */
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-hearts::before,
+.floating-hearts::after {
+    content: '❤️';
+    position: absolute;
+    font-size: 20px;
+    animation: float 15s infinite;
+    opacity: 0.3;
+}
+
+.floating-hearts::before {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.floating-hearts::after {
+    content: '💕';
+    left: 80%;
+    animation-delay: 7s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ==================== PAGE 1: PASSWORD PAGE ==================== */
+#passwordPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    position: fixed;
+    overflow: hidden;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#passwordPage::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px);
+    background-size: 40px 40px;
+    animation: moveBackground 20s linear infinite;
+}
+
+#passwordPage::after {
+    content: '✨';
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.1;
+    top: 10%;
+    left: 15%;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(40px, 40px) rotate(360deg);
+    }
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-container::before {
+    content: '🔒';
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.08;
+    top: 15%;
+    right: 20%;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.password-container::after {
+    content: '💫';
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.1;
+    bottom: 20%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.08;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.12;
+    }
+}
+
+.password-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 70px 50px;
+    border-radius: 30px;
+    box-shadow: 0 30px 80px rgba(102, 126, 234, 0.5), 
+                0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    text-align: center;
+    max-width: 520px;
+    width: 90%;
+    animation: slideIn 0.8s ease;
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+}
+
+.password-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(0deg) translate(-50%, -50%);
+    }
+    100% {
+        transform: rotate(360deg) translate(-50%, -50%);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.password-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3em;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-shadow: none;
+    letter-spacing: 1px;
+    position: relative;
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+    }
+}
+
+.password-subtitle {
+    font-size: 1.15em;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+#passwordForm {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.password-input {
+    padding: 20px 28px;
+    font-size: 1.15em;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 15px;
+    outline: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Poppins', sans-serif;
+    background: rgba(249, 249, 249, 0.8);
+    position: relative;
+}
+
+.password-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.4),
+                0 0 50px rgba(102, 126, 234, 0.2);
+    transform: scale(1.03);
+    background: white;
+}
+
+.password-btn {
+    padding: 20px 45px;
+    font-size: 1.25em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 200% auto;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.password-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.5s;
+}
+
+.password-btn:hover::before {
+    left: 100%;
+}
+
+.password-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(102, 126, 234, 0.6);
+    background-position: right center;
+}
+
+.password-btn:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.error-message {
+    color: var(--red-warm);
+    font-size: 0.95em;
+    margin-top: 10px;
+    min-height: 20px;
+    font-weight: 500;
+}
+
+/* ==================== PAGE 2: APOLOGY PAGE ==================== */
+#apologyPage {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.apology-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.apology-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 60px 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 100%;
+    animation: fadeInUp 0.8s ease;
+    border: 3px solid rgba(220, 20, 60, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.apology-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5em;
+    color: #8b0000;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.apology-message {
+    font-size: 1.15em;
+    line-height: 1.9;
+    color: var(--text-dark);
+    text-align: left;
+}
+
+.apology-message p {
+    margin-bottom: 25px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.apology-message p.typing::after {
+    content: '|';
+    color: var(--red-warm);
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.apology-message p:first-child {
+    font-weight: 600;
+    color: var(--red-warm);
+}
+
+.apology-message p:last-child {
+    text-align: right;
+    font-style: italic;
+    margin-top: 35px;
+}
+
+.continue-btn {
+    display: block;
+    margin: 50px auto 0;
+    padding: 18px 50px;
+    font-size: 1.2em;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--red-warm), #FF1493);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 10px 25px rgba(220, 20, 60, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.continue-btn.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.continue-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(220, 20, 60, 0.4);
+}
+
+.continue-btn:active {
+    transform: translateY(-1px);
+}
+
+/* ==================== PAGE 3: MAIN PAGE - HERO SECTION ==================== */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#mainPage {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 30%, #ffdde1 60%, #ffc3a0 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+}
+
+/* ==================== I LOVE YOU ANIMATION SECTION ==================== */
+.love-animation-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.love-animation-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.love-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 6em;
+    font-weight: 700;
+    color: #FF1493;
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.3),
+                 0 0 40px rgba(220, 20, 60, 0.15);
+    cursor: default;
+    user-select: none;
+    animation: fadeInText 2s ease-out forwards, shimmerGlow 6s ease-in-out 2s infinite, breathe 8s ease-in-out 2s infinite;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 3px;
+    filter: drop-shadow(0 5px 15px rgba(255, 20, 147, 0.2));
+    transition: all 0.5s ease;
+    margin-bottom: 40px;
+    opacity: 0;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.love-text:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 10px 25px rgba(255, 20, 147, 0.3));
+}
+
+@keyframes shimmerGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 20, 147, 0.4),
+                     0 0 40px rgba(220, 20, 60, 0.2);
+        color: #FF1493;
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(220, 20, 60, 0.4),
+                     0 0 40px rgba(255, 215, 0, 0.3);
+        color: #DC143C;
+    }
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.02);
+        opacity: 0.99;
+    }
+}
+
+/* Floating Hearts Container */
+.floating-hearts-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0;
+    animation: floatHeart 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(360deg);
+    }
+}
+
+/* Particle styles for canvas particles */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 20px;
+    animation: particleFadeOut 2s ease-out forwards;
+}
+
+@keyframes particleFadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--px), var(--py)) scale(0.3);
+    }
+}
+
+/* Sparkle effect */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #FFD700, transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleFade 1.5s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(var(--sx), var(--sy));
+    }
+}
+
+/* Rose petal falling effect */
+.rose-petal {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(ellipse at center, #FFB6D9 0%, #FFC0CB 50%, transparent 100%);
+    border-radius: 50% 0 50% 0;
+    opacity: 0.6;
+    animation: petalFall linear forwards;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Scroll Down Arrow */
+.scroll-down-arrow {
+    margin-top: 60px;
+    text-align: center;
+    animation: bounceArrow 2s infinite ease-in-out;
+    cursor: pointer;
+}
+
+.scroll-down-arrow span {
+    display: block;
+    font-size: 1.2em;
+    color: #FF1493;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 8px rgba(255, 20, 147, 0.3);
+}
+
+.arrow-icon {
+    font-size: 3em;
+    color: #FF1493;
+    text-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
+    display: inline-block;
+}
+
+@keyframes bounceArrow {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.scroll-down-arrow:hover .arrow-icon {
+    animation: arrowPulse 0.6s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* ==================== DECORATIVE BORDER ==================== */
+.decorative-border {
+    background: transparent;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.heart-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.divider-heart {
+    font-size: 2.5em;
+    animation: heartBeat 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(255, 20, 147, 0.3));
+}
+
+.divider-heart:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.divider-heart:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.divider-heart:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.divider-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 20, 147, 0.3) 20%, 
+        rgba(220, 20, 60, 0.5) 50%, 
+        rgba(255, 20, 147, 0.3) 80%, 
+        transparent 100%
+    );
+    position: relative;
+}
+
+.divider-line::before {
+    content: '✨';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    animation: sparkleRotate 3s linear infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkleRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        opacity: 0.6;
+    }
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeInScale 1s ease;
+}
+
+@keyframes fadeInScale {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hero-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 6em;
+    color: #4a0e4e;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.5em;
+    color: #5a1f5e;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+/* Birthday Countdown */
+.birthday-counter {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 50px;
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0 15px 40px rgba(220, 20, 60, 0.3);
+    margin: 30px 0;
+}
+
+.birthday-counter h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    color: var(--red-warm);
+    margin-bottom: 25px;
+}
+
+.countdown {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.countdown-item span {
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--red-warm);
+    display: block;
+    line-height: 1;
+}
+
+.countdown-item p {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scroll-indicator {
+    margin-top: 60px;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    color: #5a1f5e;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.scroll-arrow {
+    font-size: 2em;
+    color: #5a1f5e;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ==================== TIMELINE SECTION ==================== */
+.timeline-section {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #fff0f5 0%, #ffe4e8 50%, #ffd4dc 100%);
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5em;
+    text-align: center;
+    color: var(--red-warm);
+    margin-bottom: 80px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--pink-medium), var(--red-warm));
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+}
+
+.timeline-item {
+    margin-bottom: 80px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: auto;
+    text-align: left;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: auto;
+    text-align: right;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: var(--red-warm);
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 0 0 4px var(--pink-medium), 0 0 20px rgba(220, 20, 60, 0.5);
+    z-index: 2;
+}
+
+.timeline-content {
+    width: calc(50% - 50px);
+    background: white;
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
+}
+
+.timeline-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em;
+    color: var(--red-warm);
+    margin: 0;
+}
+
+/* ==================== SONG SECTION ==================== */
+.song-section {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #ffd4dc 0%, #ffb3c1 50%, #ff8fab 100%);
+    text-align: center;
+}
+
+.song-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(220, 20, 60, 0.2);
+}
+
+.song-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    color: var(--red-warm);
+    margin-bottom: 10px;
+}
+
+.song-artist {
+    font-size: 1.3em;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.song-lyrics {
+    font-size: 1.1em;
+    line-height: 1.9;
+    color: var(--text-dark);
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.song-note {
+    font-size: 0.95em;
+    color: var(--red-warm);
+    font-weight: 600;
+}
+
+/* ==================== LOVE LETTER SECTION ==================== */
+.love-letter-section {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #ff8fab 0%, #ffa6c9 50%, #ffc0e0 100%);
+}
+
+.love-letter {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 60px 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(220, 20, 60, 0.2);
+    font-size: 1.15em;
+    line-height: 1.9;
+    color: var(--text-dark);
+}
+
+.love-letter p {
+    margin-bottom: 25px;
+}
+
+.love-letter p:first-child {
+    font-weight: 600;
+    color: var(--red-warm);
+}
+
+.letter-signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 40px;
+    color: var(--red-warm);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffc3a0 100%);
+    padding: 80px 20px 40px;
+    text-align: center;
+    color: #4a4a4a;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 20%, 
+        rgba(255, 255, 255, 0.8) 50%, 
+        rgba(255, 255, 255, 0.3) 80%, 
+        transparent 100%
+    );
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.footer-heart {
+    animation: floatHeart 3s ease-in-out infinite;
+    display: inline-block;
+    filter: drop-shadow(0 4px 8px rgba(255, 20, 147, 0.4));
+}
+
+.footer-heart:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.footer-heart:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.footer-heart:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.footer-message {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5em;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    color: #2d2d2d;
+    animation: gentleGlow 3s ease-in-out infinite;
+}
+
+@keyframes gentleGlow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5),
+                     0 0 15px rgba(220, 20, 60, 0.3);
+    }
+    50% {
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5),
+                     0 0 25px rgba(220, 20, 60, 0.4);
+    }
+}
+
+.footer-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+    font-size: 1.5em;
+}
+
+.footer-star {
+    animation: sparkle 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.footer-star:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.footer-star:nth-child(5) {
+    animation-delay: 1s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(180deg);
+    }
+}
+
+.footer-infinity {
+    font-size: 1.8em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.footer-divider {
+    color: #6a6a6a;
+}
+
+.footer-tagline {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3em;
+    margin: 20px 0;
+    color: #5a5a5a;
+    font-style: italic;
+}
+
+.footer-year {
+    margin-top: 30px;
+    font-size: 0.95em;
+    color: #7a7a7a;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .password-title {
+        font-size: 2.2em;
+    }
+    
+    .password-box {
+        padding: 50px 30px;
+    }
+    
+    .password-subtitle {
+        font-size: 1em;
+    }
+    
+    .password-input {
+        padding: 16px 22px;
+        font-size: 1em;
+    }
+    
+    .password-btn {
+        padding: 18px 35px;
+        font-size: 1.1em;
+    }
+    
+    .love-text {
+        font-size: 4em;
+        letter-spacing: 2px;
+    }
+    
+    .decorative-border {
+        padding: 40px 15px;
+    }
+    
+    .divider-heart {
+        font-size: 2em;
+    }
+    
+    .divider-line::before {
+        font-size: 1em;
+    }
+    
+    .floating-hearts-container {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .floating-heart {
+        font-size: 20px;
+    }
+    
+    .scroll-down-arrow span {
+        font-size: 1em;
+    }
+    
+    .arrow-icon {
+        font-size: 2.5em;
+    }
+    
+    .apology-title {
+        font-size: 2.5em;
+    }
+    
+    .apology-content {
+        padding: 40px 30px;
+    }
+    
+    .apology-message {
+        font-size: 1em;
+    }
+    
+    .hero-title {
+        font-size: 4em;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2em;
+    }
+    
+    .birthday-counter {
+        padding: 30px 25px;
+    }
+    
+    .birthday-counter h3 {
+        font-size: 1.5em;
+    }
+    
+    .countdown {
+        gap: 15px;
+    }
+    
+    .countdown-item span {
+        font-size: 2.5em;
+    }
+    
+    .countdown-item p {
+        font-size: 0.85em;
+    }
+    
+    .section-title {
+        font-size: 2.5em;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+        text-align: left;
+    }
+    
+    .timeline-title {
+        font-size: 1.6em;
+    }
+    
+    .love-letter {
+        padding: 40px 30px;
+        font-size: 1em;
+    }
+    
+    .song-container {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .password-title {
+        font-size: 1.9em;
+    }
+    
+    .password-box {
+        padding: 40px 25px;
+    }
+    
+    .password-input,
+    .password-btn {
+        font-size: 1em;
+        padding: 15px 20px;
+    }
+    
+    .apology-title {
+        font-size: 2em;
+    }
+    
+    .continue-btn {
+        font-size: 1em;
+        padding: 15px 35px;
+    }
+    
+    .love-text {
+        font-size: 2.8em;
+        letter-spacing: 1px;
+    }
+    
+    .decorative-border {
+        padding: 30px 10px;
+    }
+    
+    .heart-divider {
+        gap: 10px;
+    }
+    
+    .divider-heart {
+        font-size: 1.5em;
+    }
+    
+    .divider-line::before {
+        font-size: 0.8em;
+    }
+    
+    .floating-hearts-container {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .floating-heart {
+        font-size: 16px;
+    }
+    
+    .scroll-down-arrow {
+        margin-top: 40px;
+    }
+    
+    .scroll-down-arrow span {
+        font-size: 0.9em;
+    }
+    
+    .arrow-icon {
+        font-size: 2em;
+    }
+    
+    .hero-title {
+        font-size: 3em;
+    }
+    
+    .hero-subtitle {
+        font-size: 1em;
+    }
+    
+    .birthday-counter {
+        padding: 25px 20px;
+    }
+    
+    .birthday-counter h3 {
+        font-size: 1.2em;
+    }
+    
+    .countdown {
+        gap: 10px;
+    }
+    
+    .countdown-item {
+        min-width: 60px;
+    }
+    
+    .countdown-item span {
+        font-size: 2em;
+    }
+    
+    .countdown-item p {
+        font-size: 0.75em;
+    }
+    
+    .section-title {
+        font-size: 2em;
+    }
+    
+    .timeline-content {
+        padding: 25px;
+    }
+    
+    .footer {
+        padding: 60px 15px 30px;
+    }
+    
+    .footer-hearts {
+        font-size: 2em;
+        gap: 20px;
+    }
+    
+    .footer-message {
+        font-size: 2.5em;
+    }
+    
+    .footer-decoration {
+        font-size: 1.2em;
+        gap: 10px;
+    }
+    
+    .footer-tagline {
+        font-size: 1.1em;
+    }
+}
+
+/* ==================== AOS ANIMATION CLASSES ==================== */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
