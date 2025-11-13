@@ -3,7 +3,7 @@
 
 const CONFIG = {
     // Password to unlock the website
-    PASSWORD: "forever",  // Change this to your desired password
+    PASSWORD: "ichhunaitik3115",  // Change this to your desired password
     
     // Birthday date (format: YYYY-MM-DD - year will auto-update for next birthday)
     BIRTHDAY_DATE: "2026-01-15",  // January 15th - change to actual birthday
@@ -641,3 +641,4 @@ function setupScrollDownArrow() {
         });
     }
 }
+
