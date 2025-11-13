@@ -1,6 +1,3 @@
-# 💕 Romantic Website for Your Girlfriend
-
-A beautiful, personalized multi-page romantic website with password protection, apology section, and interactive timeline.
 
 ## ✨ Features
 
@@ -177,3 +174,4 @@ This website is designed to help you express your feelings in a beautiful and cr
 ---
 
 **Need help?** Check the comments in the code files for guidance on customization!
+
